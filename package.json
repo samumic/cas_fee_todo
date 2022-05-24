@@ -15,9 +15,9 @@
   "author": "Samir Mumic",
   "license": "ISC",
   "devDependencies": {
+    "@namics/stylelint-bem": "^7.0.0",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "html-validator-cli": "^2.0.0",
     "stylelint": "^14.7.1",
