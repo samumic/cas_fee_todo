@@ -102,7 +102,7 @@ body {
 
 .m-task__list-item-text {
   font-weight: 600;
-  flex: 3;
+  flex: 5;
 }
 
 .m-task__list-item-date {
@@ -111,6 +111,21 @@ body {
 
 .m-task__list-item-status {
   flex: 1;
+}
+
+.m-task__list-item-priority {
+  flex: 1;
+}
+
+.m-task__list-item-priority i {
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #685a72;
+  color: #fff;
+}
+
+.m-task__list-item-priority i::before {
+  color: white;
 }
 
 .m-task__list-item--open .m-task__list-item-status span {
