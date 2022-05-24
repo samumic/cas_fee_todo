@@ -15,13 +15,52 @@
     <script src="./index.js" type="module"></script>
   </head>
   <body>
-    <header class="o-app-header">
+    <header class="l-app-header">
       <div class="o-app-header__container">
         <h1 class="o-app-header__title">To Do's, Today</h1>
         <span class="o-app-header__subtitle js-app-header__subtitle">Monday, August 10</span>
       </div>
     </header>
-    <main></main>
-    <footer></footer>
+    <main>
+      <div class="l-app-container">
+        <div class="m-task-header">
+          <h2 class="m-task-header__title">Board</h2>
+          <div class="m-task-header__filter">
+            <i class="bi bi-filter"></i>
+            <button class="m-task-header__filter-action">Date</button>
+            <button class="m-task-header__filter-action">Status</button>
+            <button class="m-task-header__filter-action">Priority</button>
+          </div>
+        </div>
+        <ul class="m-task__list">
+          <li class="m-task__list-item m-task__list-item--create">
+            <i class="bi bi-plus-lg"></i>
+            <span class="m-task__list-item-text">Create task</span>
+          </li>
+          <li class="m-task__list-item m-task__list-item--open">
+            <span class="m-task__list-item-text">Add Javascript functionality</span>
+            <span class="m-task__list-item-date">13:00</span>
+            <span class="m-task__list-item-status">
+              <span>Open</span>
+            </span>
+            <span>
+              <i class="bi bi-check-square"></i>
+              <i class="bi bi-pencil-square"></i>
+            </span>
+          </li>
+          <li class="m-task__list-item m-task__list-item--closed">
+            <span class="m-task__list-item-text">Add DOM manipulation</span>
+            <span class="m-task__list-item-date">16:00</span>
+            <span class="m-task__list-item-status">
+              <span>Closed</span>
+            </span>
+            <span>
+              <i class="bi bi-check-square"></i>
+              <i class="bi bi-pencil-square"></i>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </main>
   </body>
 </html>
