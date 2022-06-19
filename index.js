@@ -1,11 +1,10 @@
 import express from 'express';
 
-const app = express();
-const port = 3000;
+const APP = express();
+const PORT = 3000;
 
-app.use(express.static('source/public'));
+APP.use(express.static('source/public'));
 
-app.listen(port, () => {
-    // eslint-disable-next-line no-console
-    console.log(`cas-fee-todo app listening at http://localhost:${port}`);
+APP.listen(PORT, () => {
+    console.log(`cas-fee-todo APP listening at http://localhost:${PORT}`);
 });
