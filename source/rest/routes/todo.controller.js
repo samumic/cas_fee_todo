@@ -15,7 +15,7 @@ TODO.get('/api/todos', (req, res) => {
 });
 
 TODO.post('/api/todos', (req, res) => {
-  toDoStore.add(req.body.task, req.body.time, req.body.state, req.body.priority, (err, items) => {
+  toDoStore.add(req.body.task, req.body.time, req.body.priority, (err, items) => {
     if (err) {
       res.status(400);
       res.json();
@@ -26,7 +26,7 @@ TODO.post('/api/todos', (req, res) => {
 });
 
 TODO.put('/api/todos', (req, res) => {
-  toDoStore.update(req.body.id, req.body.task, req.body.time, req.body.state, req.body.priority, (err, items) => {
+  toDoStore.update(req.body.id, req.body.task, req.body.time, req.body.priority, (err, items) => {
     if (err) {
       res.status(400);
       res.json();

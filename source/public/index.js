@@ -1,8 +1,15 @@
-import getFormattedDateFull from './helpers/date.js';
+import ListComponent from './components/list/list.js';
 
-function setFormattedDate() {
-  const element = document.querySelector('.js-app-header__subtitle');
-  element.innerText = getFormattedDateFull();
+class App {
+  constructor() {
+    this.listComponent = new ListComponent();
+  }
+
+  initialize() {
+    this.listComponent.initialize();
+  }
 }
 
-setFormattedDate();
+const application = new App();
+
+application.initialize();

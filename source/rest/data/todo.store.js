@@ -6,8 +6,8 @@ class ToDoStore {
     this.db = new Datastore({filename: './source/rest/data/todo.db', autoload: true});
   }
 
-  add(task, time, state, priority, callback) {
-    const todo = new ToDo(task, time, state, priority);
+  add(task, time, priority, callback) {
+    const todo = new ToDo(task, time, 0, priority);
     this.db.insert(todo, (err, newDoc) => {
       if (callback) {
         callback(err, newDoc);
@@ -15,8 +15,8 @@ class ToDoStore {
     });
   }
 
-  update(id, task, time, state, priority, callback) {
-    this.db.update({_id: id}, {$set: {task, time, state, priority}}, {returnUpdatedDocs: true}, (err, numDocs, doc) => {
+  update(id, task, time, priority, callback) {
+    this.db.update({_id: id}, {$set: {task, time, priority}}, {returnUpdatedDocs: true}, (err, numDocs, doc) => {
       callback(err, doc);
     });
   }
