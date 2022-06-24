@@ -1,5 +1,6 @@
 import ListItemComponent from '../list-item/list-item.js';
 import {getTasks, createTask, updateTask, patchTask} from '../../services/task.service.js';
+import {compareByTime, compareByState, compareByPriority} from '../../helpers/compare.js';
 import ListItemEdit from '../list-item-edit/list-item-edit.js';
 
 class ListComponent {
@@ -10,9 +11,9 @@ class ListComponent {
           <h2 class="task-list__header-title">Board</h2>
           <div class="task-list__header-filter js-task-list__header-filter">
             <i class="bi bi-filter"></i>
-            <button class="task-list__header-filter-action">Time</button>
-            <button class="task-list__header-filter-action">Status</button>
-            <button class="task-list__header-filter-action">Priority</button>
+            <button class="task-list__header-filter-action" data-filter-type="time">Time</button>
+            <button class="task-list__header-filter-action" data-filter-type="state">Status</button>
+            <button class="task-list__header-filter-action" data-filter-type="priority">Priority</button>
           </div>
         </div>
         <div class="task__list-create js-task__list-create">
@@ -35,6 +36,7 @@ class ListComponent {
     document.querySelector('.js-app-container').innerHTML = template();
     this.setCreateItemEventListener();
     this.setListActionEventListeners();
+    this.setFilterEventListener();
     this.fetchItems();
   }
 
@@ -102,6 +104,23 @@ class ListComponent {
     });
   }
 
+  filterItems(filterType) {
+    switch (filterType) {
+      case 'time':
+        this.listItems.sort(compareByTime);
+        break;
+      case 'state':
+        this.listItems.sort(compareByState);
+        break;
+      case 'priority':
+        this.listItems.sort(compareByPriority);
+        break;
+      default:
+        break;
+    }
+    this.renderListItems();
+  }
+
   resetCreateItem() {
     this.isCreating = false;
     this.editTaskItem.parentElement.parentElement.remove();
@@ -162,6 +181,12 @@ class ListComponent {
         default:
           break;
       }
+    });
+  }
+
+  setFilterEventListener() {
+    document.querySelector('.js-task-list__header-filter').addEventListener('click', (event) => {
+      this.filterItems(event.target.dataset.filterType);
     });
   }
 }
