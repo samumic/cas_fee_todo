@@ -25,7 +25,7 @@ async function fetchPut(url = '', data = {}) {
     headers: HEADERS,
     body: JSON.stringify(data),
   });
-  return response.json();
+  return response.ok;
 }
 
 async function fetchPatch(url = '', data = {}) {
@@ -34,7 +34,7 @@ async function fetchPatch(url = '', data = {}) {
     headers: HEADERS,
     body: JSON.stringify(data),
   });
-  return response.json();
+  return response.ok;
 }
 
 export {fetchGet, fetchPost, fetchPut, fetchPatch};
