@@ -31,7 +31,7 @@ TODO.put('/api/todos', (req, res) => {
       res.status(400);
       res.json();
     }
-    res.status(201);
+    res.status(204);
     res.json(items);
   });
 });
@@ -42,7 +42,7 @@ TODO.patch('/api/todos', (req, res) => {
       res.status(400);
       res.json();
     }
-    res.status(201);
+    res.status(204);
     res.json(items);
   });
 });

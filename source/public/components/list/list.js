@@ -25,7 +25,7 @@ class ListComponent {
     `;
     this.listItems = [];
     this.editTaskItem = null;
-    this.editItemId = null;
+    this.editTaskItemId = null;
     this.isCreating = false;
     this.isEditing = false;
   }
@@ -62,7 +62,7 @@ class ListComponent {
 
     if (taskElement.checkValidity() && timeElement.checkValidity() && priorityElement.checkValidity()) {
       if (isUpdateItem) {
-        updateTask(this.editItemId, taskElement.value, timeElement.value, priorityElement.value).then(() => {
+        updateTask(this.editTaskItemId, taskElement.value, timeElement.value, priorityElement.value).then(() => {
           this.fetchItems();
           this.resetEditItem();
         });
@@ -79,7 +79,7 @@ class ListComponent {
     if (this.isEditing || this.isCreating) {
       return;
     }
-    const itemContext = this.listItems.find((item) => item._id === this.editItemId);
+    const itemContext = this.listItems.find((item) => item._id === this.editTaskItemId);
     const editItemTemplate = new ListItemEdit().initialize({
       ...itemContext,
       eventTypeSave: 'save-edit-item',
@@ -88,16 +88,16 @@ class ListComponent {
     const template = document.createElement('template');
     template.innerHTML = editItemTemplate;
 
-    const listItem = document.querySelector(`[data-task-id="${this.editItemId}"]`);
+    const listItem = document.querySelector(`[data-task-id="${this.editTaskItemId}"]`);
     listItem.replaceWith(template.content);
     this.isEditing = true;
   }
 
   checkItem() {
-    const itemState = this.listItems.find((item) => item._id === this.editItemId).state;
+    const itemState = this.listItems.find((item) => item._id === this.editTaskItemId).state;
     const newItemState = itemState === 'open' ? 'closed' : 'open';
 
-    patchTask(this.editItemId, newItemState).then(() => {
+    patchTask(this.editTaskItemId, newItemState).then(() => {
       this.fetchItems();
     });
   }
@@ -106,13 +106,13 @@ class ListComponent {
     this.isCreating = false;
     this.editTaskItem.parentElement.parentElement.remove();
     this.editTaskItem = null;
-    this.editItemId = null;
+    this.editTaskItemId = null;
   }
 
   resetEditItem() {
     this.isEditing = false;
     this.editTaskItem = null;
-    this.editItemId = null;
+    this.editTaskItemId = null;
   }
 
   setCreateItemEventListener() {
@@ -145,7 +145,7 @@ class ListComponent {
           this.resetCreateItem();
           break;
         case 'edit-item':
-          this.editItemId = this.editTaskItem.parentElement.parentElement.dataset.taskId;
+          this.editTaskItemId = this.editTaskItem.parentElement.parentElement.dataset.taskId;
           this.editItem();
           break;
         case 'save-edit-item':
@@ -156,7 +156,7 @@ class ListComponent {
           this.renderListItems();
           break;
         case 'check-item':
-          this.editItemId = this.editTaskItem.parentElement.parentElement.dataset.taskId;
+          this.editTaskItemId = this.editTaskItem.parentElement.parentElement.dataset.taskId;
           this.checkItem();
           break;
         default:
