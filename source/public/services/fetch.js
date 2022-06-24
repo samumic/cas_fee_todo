@@ -28,4 +28,13 @@ async function fetchPut(url = '', data = {}) {
   return response.json();
 }
 
-export {fetchGet, fetchPost, fetchPut};
+async function fetchPatch(url = '', data = {}) {
+  const response = await fetch(url, {
+    method: 'PATCH',
+    headers: HEADERS,
+    body: JSON.stringify(data),
+  });
+  return response.json();
+}
+
+export {fetchGet, fetchPost, fetchPut, fetchPatch};

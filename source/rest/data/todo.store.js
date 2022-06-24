@@ -7,7 +7,7 @@ class ToDoStore {
   }
 
   add(task, time, priority, callback) {
-    const todo = new ToDo(task, time, 0, priority);
+    const todo = new ToDo(task, time, 'open', priority);
     this.db.insert(todo, (err, newDoc) => {
       if (callback) {
         callback(err, newDoc);
@@ -17,6 +17,12 @@ class ToDoStore {
 
   update(id, task, time, priority, callback) {
     this.db.update({_id: id}, {$set: {task, time, priority}}, {returnUpdatedDocs: true}, (err, numDocs, doc) => {
+      callback(err, doc);
+    });
+  }
+
+  patch(id, state, callback) {
+    this.db.update({_id: id}, {$set: {state}}, {returnUpdatedDocs: true}, (err, numDocs, doc) => {
       callback(err, doc);
     });
   }

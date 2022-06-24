@@ -1,5 +1,5 @@
 import ListItemComponent from '../list-item/list-item.js';
-import { getTasks, createTask, updateTask } from '../../services/task.service.js';
+import {getTasks, createTask, updateTask, patchTask} from '../../services/task.service.js';
 import ListItemEdit from '../list-item-edit/list-item-edit.js';
 
 class ListComponent {
@@ -8,9 +8,9 @@ class ListComponent {
       <div class="task-list">
         <div class="task-list__header">
           <h2 class="task-list__header-title">Board</h2>
-          <div class="task-list__header-filter">
+          <div class="task-list__header-filter js-task-list__header-filter">
             <i class="bi bi-filter"></i>
-            <button class="task-list__header-filter-action">Date</button>
+            <button class="task-list__header-filter-action">Time</button>
             <button class="task-list__header-filter-action">Status</button>
             <button class="task-list__header-filter-action">Priority</button>
           </div>
@@ -24,7 +24,7 @@ class ListComponent {
       </div>
     `;
     this.listItems = [];
-    this.editItem = null;
+    this.editTaskItem = null;
     this.editItemId = null;
     this.isCreating = false;
     this.isEditing = false;
@@ -55,7 +55,7 @@ class ListComponent {
   }
 
   saveItem(isUpdateItem) {
-    const formElement = this.editItem.parentElement;
+    const formElement = this.editTaskItem.parentElement;
     const taskElement = formElement.elements.task;
     const timeElement = formElement.elements.time;
     const priorityElement = formElement.elements.priority;
@@ -75,12 +75,16 @@ class ListComponent {
     }
   }
 
-  editTaskItem() {
+  editItem() {
     if (this.isEditing || this.isCreating) {
       return;
     }
     const itemContext = this.listItems.find((item) => item._id === this.editItemId);
-    const editItemTemplate = new ListItemEdit().initialize({...itemContext, eventTypeSave: 'save-edit-item', eventTypeCancel: 'cancel-edit-item'});
+    const editItemTemplate = new ListItemEdit().initialize({
+      ...itemContext,
+      eventTypeSave: 'save-edit-item',
+      eventTypeCancel: 'cancel-edit-item',
+    });
     const template = document.createElement('template');
     template.innerHTML = editItemTemplate;
 
@@ -89,16 +93,25 @@ class ListComponent {
     this.isEditing = true;
   }
 
+  checkItem() {
+    const itemState = this.listItems.find((item) => item._id === this.editItemId).state;
+    const newItemState = itemState === 'open' ? 'closed' : 'open';
+
+    patchTask(this.editItemId, newItemState).then(() => {
+      this.fetchItems();
+    });
+  }
+
   resetCreateItem() {
     this.isCreating = false;
-    this.editItem.parentElement.parentElement.remove();
-    this.editItem = null;
+    this.editTaskItem.parentElement.parentElement.remove();
+    this.editTaskItem = null;
     this.editItemId = null;
   }
 
   resetEditItem() {
     this.isEditing = false;
-    this.editItem = null;
+    this.editTaskItem = null;
     this.editItemId = null;
   }
 
@@ -109,15 +122,20 @@ class ListComponent {
       }
 
       this.isCreating = true;
-      const createItemTemplate = new ListItemEdit().initialize({eventTypeSave: 'create-item', eventTypeCancel: 'cancel-create-item'});
+      const createItemTemplate = new ListItemEdit().initialize(
+        {
+          eventTypeSave: 'create-item',
+          eventTypeCancel: 'cancel-create-item',
+        },
+      );
       document.querySelector('.js-task-list__list').insertAdjacentHTML('afterbegin', createItemTemplate);
     });
   }
 
   setListActionEventListeners() {
     document.querySelector('.js-task-list__list').addEventListener('click', (event) => {
-      this.editItem = event.target;
-      const {eventType} = this.editItem.dataset;
+      this.editTaskItem = event.target;
+      const {eventType} = this.editTaskItem.dataset;
 
       switch (eventType) {
         case 'create-item':
@@ -127,8 +145,8 @@ class ListComponent {
           this.resetCreateItem();
           break;
         case 'edit-item':
-          this.editItemId = this.editItem.parentElement.parentElement.dataset.taskId;
-          this.editTaskItem();
+          this.editItemId = this.editTaskItem.parentElement.parentElement.dataset.taskId;
+          this.editItem();
           break;
         case 'save-edit-item':
           this.saveItem(true);
@@ -136,6 +154,10 @@ class ListComponent {
         case 'cancel-edit-item':
           this.resetEditItem();
           this.renderListItems();
+          break;
+        case 'check-item':
+          this.editItemId = this.editTaskItem.parentElement.parentElement.dataset.taskId;
+          this.checkItem();
           break;
         default:
           break;

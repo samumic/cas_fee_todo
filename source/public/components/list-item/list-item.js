@@ -1,7 +1,7 @@
 class ListItemComponent {
   constructor() {
     this.template = `
-        <li class="task__list-item task__list-item--open" data-task-id={{_id}}>
+        <li class="task__list-item task__list-item--{{state}} task__list-item--{{priority}}" data-task-id={{_id}}>
           <span class="task__list-item-text">{{task}}</span>
           <span class="task__list-item-date">{{time}}</span>
           <span class="task__list-item-status">
@@ -10,9 +10,9 @@ class ListItemComponent {
           <span class="task__list-item-priority">
             <i class="bi bi-chevron-double-up"></i>
           </span>
-          <span>
-            <i class="bi bi-check-square" data-event-type="check-item"></i>
+          <span class="task__list-item-actions">
             <i class="bi bi-pencil-square" data-event-type="edit-item"></i>
+            <i class="bi bi-check-square" data-event-type="check-item"></i>
           </span>
         </li>`;
   }

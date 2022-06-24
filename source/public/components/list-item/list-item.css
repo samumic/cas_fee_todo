@@ -83,3 +83,43 @@
   color: #46a0ff;
   margin-right: 15px;
 }
+
+.task__list-item--0 .task__list-item-priority i {
+  background-color: #b1e8fd;
+}
+
+.task__list-item--1 .task__list-item-priority i {
+  background-color: #55d0db;
+}
+
+.task__list-item--2 .task__list-item-priority i {
+  background-color: #acc78e;
+}
+
+.task__list-item--3 .task__list-item-priority i {
+  background-color: #dcacf2;
+}
+
+.task__list-item--0 .task__list-item-priority i::before {
+  content: '\F27E';
+}
+
+.task__list-item--1 .task__list-item-priority i::before {
+  content: '\F282';
+}
+
+.task__list-item--2 .task__list-item-priority i::before {
+  content: '\F286';
+}
+
+.task__list-item--3 .task__list-item-priority i::before {
+  content: '\F281';
+}
+
+.task__list-item--open .task__list-item-actions .bi-check-square::before {
+  content: '\F5D5';
+}
+
+.task__list-item--closed .task__list-item-actions .bi-check-square::before {
+  content: '\F5D6';
+}

@@ -1,4 +1,4 @@
-import {fetchGet, fetchPost, fetchPut} from './fetch.js';
+import {fetchGet, fetchPost, fetchPut, fetchPatch} from './fetch.js';
 
 const API = 'http://localhost:3650/api/todos';
 
@@ -16,4 +16,9 @@ async function updateTask(id, task, time, priority) {
   return fetchPut(API, requestBody);
 }
 
-export {getTasks, createTask, updateTask};
+async function patchTask(id, state) {
+  const requestBody = {id, state};
+  return fetchPatch(API, requestBody);
+}
+
+export {getTasks, createTask, updateTask, patchTask};

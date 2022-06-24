@@ -36,4 +36,15 @@ TODO.put('/api/todos', (req, res) => {
   });
 });
 
+TODO.patch('/api/todos', (req, res) => {
+  toDoStore.patch(req.body.id, req.body.state, (err, items) => {
+    if (err) {
+      res.status(400);
+      res.json();
+    }
+    res.status(201);
+    res.json(items);
+  });
+});
+
 export default TODO;
