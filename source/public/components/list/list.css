@@ -6,7 +6,7 @@
 }
 
 .task-list__header-title {
-  font-size: 28px;
+  font-size: var(--fontSizeMedium);
   font-weight: 600;
 }
 
@@ -16,25 +16,23 @@
 }
 
 .task-list__header-filter i {
-  font-size: 20px;
+  font-size: var(--fontSizeNormal);
   margin-right: 10px;
 }
 
-.task-list__header-filter-action {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 400;
+.task-list__button {
   padding: 10px 20px;
-  background-color: #8ec5fc;
-  color: white;
+  background-color: var(--babyBlue);
+  color: var(--white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-left: 10px;
-  transition: all ease-in 0.2s;
+  transition: background-color ease-in 0.2s;
 }
 
 .task-list__header-filter-action:hover {
-  background-color: #4ba5ff;
+  background-color: var(--babyBlueDark);
 }
 
 .task__list-create {
@@ -47,7 +45,7 @@
   margin-bottom: 25px;
   border-radius: 10px;
   cursor: pointer;
-  border: dashed 2px #adadad;
+  border: dashed 2px var(--babyGrey);
 }
 
 .task__list-create i {

@@ -11,8 +11,8 @@ class ListItemEdit {
               <option value="2">High</option>
               <option value="3">Very important</option>
             </select>
-            <button class="task__list-item-button" type="button" data-event-type="{{eventTypeSave}}">Save</button>
-            <button class="task__list-item-button" type="button" data-event-type="{{eventTypeCancel}}">Cancel</button>
+            <button class="task__list-item-button task-list__button" type="button" data-event-type="{{eventTypeSave}}">Save</button>
+            <button class="task__list-item-button task-list__button" type="button" data-event-type="{{eventTypeCancel}}">Cancel</button>
           </form>
         </li>`;
   }

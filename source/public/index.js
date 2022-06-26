@@ -1,4 +1,5 @@
 import ListComponent from './components/list/list.js';
+import getFormattedDateFull from './helpers/date.js';
 
 class App {
   constructor() {
@@ -7,6 +8,7 @@ class App {
 
   initialize() {
     this.listComponent.initialize();
+    document.querySelector('.js-app-header__subtitle').innerHTML = getFormattedDateFull();
   }
 }
 

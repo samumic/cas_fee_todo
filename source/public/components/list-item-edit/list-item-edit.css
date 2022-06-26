@@ -1,12 +1,15 @@
 .task__list-item--edit {
   padding-left: 42px;
-  border-left: 5px solid darkgrey;
-  box-shadow: rgb(0 0 0 / 18%) 0 2px 4px;
+  border-left: 5px solid var(--babyGrey);
+  box-shadow: var(--shadowBox);
 }
 
 .task__list-item-input,
-.task__list-item-select,
-.task__list-item-button {
+.task__list-item-select {
   height: 25px;
   margin-right: 25px;
+}
+
+.task__list-item-button:hover {
+  background-color: var(--babyBlueDark);
 }

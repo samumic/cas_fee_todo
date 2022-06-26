@@ -1,0 +1,23 @@
+:root {
+  --white: #fff;
+  --whiteDarker: #f8f8f8;
+  --babyBlue: #8ec5fc;
+  --babyBlueLight: #55d0db;
+  --babyBlueLighter: #b1e8fd;
+  --babyBlueDark: #46a0ff;
+  --babyViolette: #e0c3fc;
+  --babyVioletteDark: #dcacf2;
+  --babyGreen: #acc78e;
+  --babyGreenDark: #38a338;
+  --babyGrey: #adadad;
+  --fontSizeLarge: 48px;
+  --fontSizeMedium: 28px;
+  --fontSizeNormal: 20px;
+  --fontSizeSmall: 18px;
+  --paddingBox: 0 25px;
+  --shadowBox: rgb(0 0 0 / 18%) 0 2px 4px;
+}
+
+* {
+  box-sizing: border-box;
+}

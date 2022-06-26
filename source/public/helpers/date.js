@@ -3,7 +3,7 @@ function getFormattedDateFull() {
   const month = date.toLocaleString('default', { month: 'long' });
   const day = date.toLocaleString('default', { weekday: 'long' });
 
-  return `${day}, ${month} ${date.getDay()}`;
+  return `${day}, ${month} ${date.getDate()}`;
 }
 
 export default getFormattedDateFull;

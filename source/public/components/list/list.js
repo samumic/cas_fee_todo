@@ -11,9 +11,9 @@ class ListComponent {
           <h2 class="task-list__header-title">Board</h2>
           <div class="task-list__header-filter js-task-list__header-filter">
             <i class="bi bi-filter"></i>
-            <button class="task-list__header-filter-action" data-filter-type="time">Time</button>
-            <button class="task-list__header-filter-action" data-filter-type="state">Status</button>
-            <button class="task-list__header-filter-action" data-filter-type="priority">Priority</button>
+            <button class="task-list__header-filter-action task-list__button" data-filter-type="time">Time</button>
+            <button class="task-list__header-filter-action task-list__button" data-filter-type="state">Status</button>
+            <button class="task-list__header-filter-action task-list__button" data-filter-type="priority">Priority</button>
           </div>
         </div>
         <div class="task__list-create js-task__list-create">
