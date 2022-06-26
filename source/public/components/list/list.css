@@ -31,6 +31,10 @@
   transition: background-color ease-in 0.2s;
 }
 
+.task-list__button--active {
+  background-color: var(--babyBlueDark);
+}
+
 .task-list__header-filter-action:hover {
   background-color: var(--babyBlueDark);
 }

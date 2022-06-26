@@ -11,9 +11,19 @@ class ListComponent {
           <h2 class="task-list__header-title">Board</h2>
           <div class="task-list__header-filter js-task-list__header-filter">
             <i class="bi bi-filter"></i>
-            <button class="task-list__header-filter-action task-list__button" data-filter-type="time">Time</button>
-            <button class="task-list__header-filter-action task-list__button" data-filter-type="state">Status</button>
-            <button class="task-list__header-filter-action task-list__button" data-filter-type="priority">Priority</button>
+            <button class="
+            task-list__header-filter-action
+            task-list__button
+            task-list__button--active
+            js-task-list__header-filter-button" data-filter-type="priority">Priority</button>
+            <button class="
+            task-list__header-filter-action
+            task-list__button
+            js-task-list__header-filter-button" data-filter-type="time">Time</button>
+            <button class="
+            task-list__header-filter-action
+            task-list__button
+            js-task-list__header-filter-button" data-filter-type="state">Status</button>
           </div>
         </div>
         <div class="task__list-create js-task__list-create">
@@ -29,6 +39,7 @@ class ListComponent {
     this.editTaskItemId = null;
     this.isCreating = false;
     this.isEditing = false;
+    this.filterType = 'priority';
   }
 
   initialize() {
@@ -48,6 +59,8 @@ class ListComponent {
   }
 
   renderListItems() {
+    this.filterItems();
+
     const taskListElement = document.querySelector('.js-task-list__list');
     let listItemsTemplate = '';
     this.listItems.forEach((item) => {
@@ -104,8 +117,8 @@ class ListComponent {
     });
   }
 
-  filterItems(filterType) {
-    switch (filterType) {
+  filterItems() {
+    switch (this.filterType) {
       case 'time':
         this.listItems.sort(compareByTime);
         break;
@@ -118,7 +131,6 @@ class ListComponent {
       default:
         break;
     }
-    this.renderListItems();
   }
 
   resetCreateItem() {
@@ -186,7 +198,11 @@ class ListComponent {
 
   setFilterEventListener() {
     document.querySelector('.js-task-list__header-filter').addEventListener('click', (event) => {
-      this.filterItems(event.target.dataset.filterType);
+      document.querySelectorAll('.js-task-list__header-filter-button')
+        .forEach((e) => e.classList.remove('task-list__button--active'));
+      event.target.classList.add('task-list__button--active');
+      this.filterType = event.target.dataset.filterType;
+      this.renderListItems();
     });
   }
 }
