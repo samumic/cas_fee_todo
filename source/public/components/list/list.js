@@ -70,7 +70,7 @@ class ListComponent {
   }
 
   saveItem(isUpdateItem) {
-    const formElement = this.editTaskItem.parentElement;
+    const formElement = this.editTaskItem.parentElement.parentElement;
     const taskElement = formElement.elements.task;
     const timeElement = formElement.elements.time;
     const priorityElement = formElement.elements.priority;
@@ -135,7 +135,7 @@ class ListComponent {
 
   resetCreateItem() {
     this.isCreating = false;
-    this.editTaskItem.parentElement.parentElement.remove();
+    this.editTaskItem.parentElement.parentElement.parentElement.remove();
     this.editTaskItem = null;
     this.editTaskItemId = null;
   }
