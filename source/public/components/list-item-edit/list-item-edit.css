@@ -1,5 +1,4 @@
 .task__list-item--edit {
-  padding-left: 42px;
   border-left: 5px solid var(--babyGrey);
   box-shadow: var(--shadowBox);
 }
@@ -19,4 +18,20 @@
   margin-right: 25px;
   padding: 0 20px;
   border: 2px solid var(--babyGrey);
+}
+
+@media only screen and (max-width: 825px) {
+  .task__list-item--edit {
+    display: flex;
+  }
+
+  .task__list-item-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task__list-item-input {
+    margin-bottom: 25px;
+    margin-right: 0;
+  }
 }

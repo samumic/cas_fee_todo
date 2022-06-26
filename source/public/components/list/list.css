@@ -20,8 +20,9 @@
   height: 100%;
 }
 
-.task__list-create {
+.task-list .task__list-create {
   border: dashed 2px var(--babyGrey);
+  box-shadow: none;
 }
 
 .task__list-create i {
@@ -50,4 +51,20 @@
 
 .task-list__header-filter-action:hover {
   background-color: var(--babyBlueDark);
+}
+
+@media only screen and (max-width: 825px) {
+  .task-list__header {
+    flex-direction: column;
+  }
+
+  .task-list__header-title {
+    margin-bottom: 25px;
+  }
+
+  .task-list .task__list-create {
+    display: flex;
+    height: 65px;
+    min-height: auto;
+  }
 }
