@@ -7,7 +7,7 @@ class ListItemEdit {
             <input class="task__list-item-input" type="time" name="time" value="{{time}}" required />
             <select class="task__list-item-input" name="priority" required>
               {{#each priorityOptions}}
-                <option value="{{value}}">
+                <option value="{{value}}" {{isSelected ../priority value}}>
                     {{text}}
                 </option>
               {{/each}}
