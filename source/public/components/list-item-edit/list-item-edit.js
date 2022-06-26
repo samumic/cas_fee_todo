@@ -5,7 +5,7 @@ class ListItemEdit {
           <form class="task__list-item-form js-task__list-item-form">
             <input class="task__list-item-input" type="text" name="task" value="{{task}}" required />
             <input class="task__list-item-input" type="time" name="time" value="{{time}}" required />
-            <select class="task__list-item-select" name="priority" required>
+            <select class="task__list-item-input" name="priority" required>
               {{#each priorityOptions}}
                 <option value="{{value}}">
                     {{text}}
@@ -13,8 +13,8 @@ class ListItemEdit {
               {{/each}}
             </select>
             <div class="task__list-item-form-actions">
-               <button class="task__list-item-button task-list__button" type="button" data-event-type="{{eventTypeSave}}">Save</button>
-               <button class="task__list-item-button task-list__button" type="button" data-event-type="{{eventTypeCancel}}">Cancel</button>
+               <button class="task-list__button" type="button" data-event-type="{{eventTypeSave}}">Save</button>
+               <button class="task-list__button" type="button" data-event-type="{{eventTypeCancel}}">Cancel</button>
             </div>
           </form>
         </li>`;

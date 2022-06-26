@@ -26,7 +26,7 @@ class ListComponent {
             js-task-list__header-filter-button" data-filter-type="state">Status</button>
           </div>
         </div>
-        <div class="task__list-create js-task__list-create">
+        <div class="task__list-item task__list-create js-task__list-create">
             <i class="bi bi-plus-lg"></i>
             <span class="task__list-item-text">Create task</span>
         </div>

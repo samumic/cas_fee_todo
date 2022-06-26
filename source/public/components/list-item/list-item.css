@@ -11,12 +11,6 @@
   transition: background-color ease-in 0.2s;
 }
 
-.task__list-item--open,
-.task__list-item--closed {
-  padding-left: 43px;
-  box-shadow: var(--shadowBox);
-}
-
 .task__list-item-text {
   font-weight: 600;
   flex: 5;
@@ -40,30 +34,36 @@
   color: var(--white);
 }
 
+.task__list-item i {
+  font-size: var(--fontSizeNormal);
+  color: var(--babyBlueDark);
+  margin-right: 15px;
+}
+
 .task__list-item-priority i::before {
   color: var(--white);
 }
 
-.task__list-item--open .task__list-item-status span {
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 10px;
-  color: var(--white);
-  background-color: var(--babyBlueDark);
+.task__list-item--open,
+.task__list-item--closed {
+  padding-left: 43px;
+  box-shadow: var(--shadowBox);
 }
 
+.task__list-item--open .task__list-item-status span,
 .task__list-item--closed .task__list-item-status span {
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 10px;
   color: var(--white);
-  background-color: var(--babyGreenDark);
 }
 
-.task__list-item i {
-  font-size: var(--fontSizeNormal);
-  color: var(--babyBlueDark);
-  margin-right: 15px;
+.task__list-item--open .task__list-item-status span {
+  background-color: var(--babyBlueDark);
+}
+
+.task__list-item--closed .task__list-item-status span {
+  background-color: var(--babyGreenDark);
 }
 
 .task__list-item--closed {
